@@ -26,7 +26,8 @@ class SuperkahramanAdapter(val heroList: ArrayList<Superkahraman>) : RecyclerVie
         holder.binding.textViewRecyclerView.text=heroList[position].name
         holder.itemView.setOnClickListener {
             val intent= Intent(holder.itemView.context,IntroductionActivity::class.java)
-            intent.putExtra("selectedHero",heroList[position])
+            MySingleton.heroSelect =heroList[position]
+           // intent.putExtra("selectedHero",heroList[position])
             holder.itemView.context.startActivity(intent)
         }
     }

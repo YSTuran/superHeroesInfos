@@ -23,12 +23,20 @@ class IntroductionActivity : AppCompatActivity() {
             insets
         }
 
-        val fromAdapter=intent
+        //val fromAdapter=intent
         //fromAdapter.getSerializableExtra("selectedHero",Superkahraman::class.java)
-        val Selection = fromAdapter.getSerializableExtra("selectedHero") as Superkahraman
+        //val Selection = fromAdapter.getSerializableExtra("selectedHero") as Superkahraman
 
-        binding.imageView.setImageResource(Selection.pic)
+        var Selection=MySingleton.heroSelect
+
+        Selection?.let {
+            binding.imageView.setImageResource(Selection.pic)
+            binding.nameText.text= "Name: ${Selection.name}"
+            binding.jobText.text= "Job: ${Selection.job}"
+        }
+
+        /*binding.imageView.setImageResource(Selection.pic)
         binding.nameText.text= "Name: ${Selection.name}"
-        binding.jobText.text= "Job: ${Selection.job}"
+        binding.jobText.text= "Job: ${Selection.job}"*/
     }
 }
